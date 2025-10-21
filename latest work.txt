@@ -1,0 +1,540 @@
+     <Box mt={8}>
+          <Grid container spacing={2}>
+            {/* first grid */}
+            <Grid size={{ md: 6, sm: 6, xs: 12 }}>
+              {/* image 1 */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: 500,
+
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)", // shadow on hover
+                  },
+                  "&:hover .overlay": {
+                    opacity: 1, // fade in overlay
+                    transform: "translateY(0)",
+                  },
+                }}
+              >
+                {/* Image */}
+                <Image
+                  src="/assets/home/latest1.jpeg"
+                  alt="Latest work 1"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                    transition: "transform 0.4s ease",
+                  }}
+                />
+
+                {/* Hover Overlay */}
+                <Box
+                  className="overlay"
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0,0,0,0.45)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    opacity: 0,
+
+                    transition: "opacity 0.4s ease, transform 0.4s ease",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 600,
+                      fontSize: 40,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    View
+                  </Typography>
+                </Box>
+              </Box>
+              <Box textAlign="left" mt={4}>
+                <Typography
+                  variant="h3"
+                  fontWeight="bold"
+                  sx={{ fontSize: 13 }}
+                  mb={2}
+                >
+                  E X E C U T I V E &nbsp; M E E T I N G &nbsp; R O O M
+                </Typography>
+                <Typography fontWeight="regular" sx={{ fontSize: 12 }} mb={2}>
+                  A modern boardroom with custom-designed furniture, acoustic
+                  wall finishes, and integrated lighting. The space is tailored
+                  for high-level discussions, blending functionality with
+                  elegance. Every detail — from the ergonomic chairs to the
+                  bespoke conference table — has been crafted to ensure comfort,
+                  focus, and a premium corporate atmosphere.
+                </Typography>
+                <Typography
+                  fontWeight="regular"
+                  sx={{ fontSize: 11, color: "#666666d0" }}
+                >
+                  INTERIOR DESIGN &nbsp;|&nbsp; CORPORATE &nbsp;|&nbsp; 2025
+                </Typography>
+              </Box>
+            </Grid>
+            {/* second grid */}
+            <Grid size={{ md: 3, sm: 6, xs: 12 }}>
+              {/* image 2 */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: 500,
+
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)", // shadow on hover
+                  },
+                  "&:hover .overlay": {
+                    opacity: 1, // fade in overlay
+                    transform: "translateY(0)",
+                  },
+                }}
+              >
+                <Box
+                  component="video"
+                  src="/assets/home/office.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    zIndex: -1, // Behind content
+                  }}
+                />
+
+                {/* Hover Overlay */}
+                <Box
+                  className="overlay"
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0,0,0,0.45)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    opacity: 0,
+
+                    transition: "opacity 0.4s ease, transform 0.4s ease",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 600,
+                      fontSize: 40,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    View
+                  </Typography>
+                </Box>
+              </Box>
+              <Box textAlign="left" mt={4}>
+                <Typography
+                  variant="h3"
+                  fontWeight="bold"
+                  sx={{ fontSize: 13 }}
+                  mb={2}
+                >
+                  C O L L A B O R A T I V E &nbsp; W O R K S P A C E
+                </Typography>
+                <Typography fontWeight="regular" sx={{ fontSize: 12 }} mb={2}>
+                  A modern boardroom with custom-designed furniture, acoustic
+                  wall finishes, and integrated lighting. The space is tailored
+                  for high-level discussions.
+                </Typography>
+                <Typography
+                  fontWeight="regular"
+                  sx={{ fontSize: 11, color: "#666666d0" }}
+                >
+                  INTERIOR DESIGN &nbsp;|&nbsp; WORKSPACE &nbsp;|&nbsp; 2025
+                </Typography>
+              </Box>
+            </Grid>
+            {/* third grid */}
+            <Grid size={{ md: 3, sm: 6, xs: 12 }}>
+              {/* image 3 */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: 500,
+
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)", // shadow on hover
+                  },
+                  "&:hover .overlay": {
+                    opacity: 1, // fade in overlay
+                    transform: "translateY(0)",
+                  },
+                }}
+              >
+                {/* Image */}
+                <Image
+                  src="/assets/home/latest3.jpeg"
+                  alt="Latest work 1"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                    transition: "transform 0.4s ease",
+                  }}
+                />
+
+                {/* Hover Overlay */}
+                <Box
+                  className="overlay"
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0,0,0,0.45)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    opacity: 0,
+
+                    transition: "opacity 0.4s ease, transform 0.4s ease",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 600,
+                      fontSize: 40,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    View
+                  </Typography>
+                </Box>
+              </Box>
+              <Box textAlign="left" mt={4}>
+                <Typography
+                  variant="h3"
+                  fontWeight="bold"
+                  sx={{ fontSize: 13 }}
+                  mb={2}
+                >
+                  S C U L P T U R E &nbsp; I N S T A L L A T I O N
+                </Typography>
+                <Typography fontWeight="regular" sx={{ fontSize: 12 }} mb={2}>
+                  Contemporary art installation that defines the corporate
+                  reception area. With geometric precision and innovative
+                  design, the sculpture embodies creativity and innovation.
+                </Typography>
+                <Typography
+                  fontWeight="regular"
+                  sx={{ fontSize: 11, color: "#666666d0" }}
+                >
+                  DECOR &nbsp;|&nbsp; ART INSTALLATION &nbsp;|&nbsp; 2025
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+        {/* second latest work */}
+        <Box mt={8}>
+          <Grid container spacing={2}>
+            {/* first grid */}
+            <Grid size={{ md: 3, sm: 6, xs: 12 }}>
+              {/* image 2 */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: 500,
+
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)", // shadow on hover
+                  },
+                  "&:hover .overlay": {
+                    opacity: 1, // fade in overlay
+                    transform: "translateY(0)",
+                  },
+                }}
+              >
+                {/* Image */}
+                <Image
+                  src="/assets/home/latest4.jpeg"
+                  alt="Latest work 1"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                    transition: "transform 0.4s ease",
+                  }}
+                />
+
+                {/* Hover Overlay */}
+                <Box
+                  className="overlay"
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0,0,0,0.45)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    opacity: 0,
+
+                    transition: "opacity 0.4s ease, transform 0.4s ease",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 600,
+                      fontSize: 40,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    View
+                  </Typography>
+                </Box>
+              </Box>
+              <Box textAlign="left" mt={4}>
+                <Typography
+                  variant="h3"
+                  fontWeight="bold"
+                  sx={{ fontSize: 13 }}
+                  mb={2}
+                >
+                  C O L L A B O R A T I V E &nbsp; W O R K S P A C E
+                </Typography>
+                <Typography fontWeight="regular" sx={{ fontSize: 12 }} mb={2}>
+                  A modern boardroom with custom-designed furniture, acoustic
+                  wall finishes, and integrated lighting. The space is tailored
+                  for high-level discussions.
+                </Typography>
+                <Typography
+                  fontWeight="regular"
+                  sx={{ fontSize: 11, color: "#666666d0" }}
+                >
+                  INTERIOR DESIGN &nbsp;|&nbsp; WORKSPACE &nbsp;|&nbsp; 2025
+                </Typography>
+              </Box>
+            </Grid>
+            {/* third grid */}
+            <Grid size={{ md: 3, sm: 6, xs: 12 }}>
+              {/* image 3 */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: 500,
+
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)", // shadow on hover
+                  },
+                  "&:hover .overlay": {
+                    opacity: 1, // fade in overlay
+                    transform: "translateY(0)",
+                  },
+                }}
+              >
+                {/* Image */}
+                <Image
+                  src="/assets/home/latest3.jpeg"
+                  alt="Latest work 1"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                    transition: "transform 0.4s ease",
+                  }}
+                />
+
+                {/* Hover Overlay */}
+                <Box
+                  className="overlay"
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0,0,0,0.45)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    opacity: 0,
+
+                    transition: "opacity 0.4s ease, transform 0.4s ease",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 600,
+                      fontSize: 40,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    View
+                  </Typography>
+                </Box>
+              </Box>
+              <Box textAlign="left" mt={4}>
+                <Typography
+                  variant="h3"
+                  fontWeight="bold"
+                  sx={{ fontSize: 13 }}
+                  mb={2}
+                >
+                  S C U L P T U R E &nbsp; I N S T A L L A T I O N
+                </Typography>
+                <Typography fontWeight="regular" sx={{ fontSize: 12 }} mb={2}>
+                  Contemporary art installation that defines the corporate
+                  reception area. With geometric precision and innovative
+                  design, the sculpture embodies creativity and innovation.
+                </Typography>
+                <Typography
+                  fontWeight="regular"
+                  sx={{ fontSize: 11, color: "#666666d0" }}
+                >
+                  DECOR &nbsp;|&nbsp; ART INSTALLATION &nbsp;|&nbsp; 2025
+                </Typography>
+              </Box>
+            </Grid>
+            {/* first grid */}
+            <Grid size={{ md: 6, sm: 6, xs: 12 }}>
+              {/* image 1 */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: 500,
+
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)", // shadow on hover
+                  },
+                  "&:hover .overlay": {
+                    opacity: 1, // fade in overlay
+                    transform: "translateY(0)",
+                  },
+                }}
+              >
+                <Box
+                  component="video"
+                  src="/assets/home/meeting.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    zIndex: -1, // Behind content
+                  }}
+                />
+
+                {/* Hover Overlay */}
+                <Box
+                  className="overlay"
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(0,0,0,0.45)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    opacity: 0,
+
+                    transition: "opacity 0.4s ease, transform 0.4s ease",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#fff",
+                      fontWeight: 600,
+                      fontSize: 40,
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    View
+                  </Typography>
+                </Box>
+              </Box>
+              <Box textAlign="left" mt={4}>
+                <Typography
+                  variant="h3"
+                  fontWeight="bold"
+                  sx={{ fontSize: 13 }}
+                  mb={2}
+                >
+                  E X E C U T I V E &nbsp; M E E T I N G &nbsp; R O O M
+                </Typography>
+                <Typography fontWeight="regular" sx={{ fontSize: 12 }} mb={2}>
+                  A modern boardroom with custom-designed furniture, acoustic
+                  wall finishes, and integrated lighting. The space is tailored
+                  for high-level discussions, blending functionality with
+                  elegance. Every detail — from the ergonomic chairs to the
+                  bespoke conference table — has been crafted to ensure comfort,
+                  focus, and a premium corporate atmosphere.
+                </Typography>
+                <Typography
+                  fontWeight="regular"
+                  sx={{ fontSize: 11, color: "#666666d0" }}
+                >
+                  INTERIOR DESIGN &nbsp;|&nbsp; CORPORATE &nbsp;|&nbsp; 2025
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+        {/* end of latest work */}

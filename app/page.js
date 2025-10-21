@@ -1,95 +1,240 @@
+"use client";
+import Hero from "@/components/Hero";
+
+import ServiceCards from "@/components/ServiceCards";
+import ArchitectureOutlinedIcon from "@mui/icons-material/ArchitectureOutlined";
+import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
+import WeekendOutlinedIcon from "@mui/icons-material/WeekendOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import FormatPaintOutlinedIcon from "@mui/icons-material/FormatPaintOutlined";
+import StyleOutlinedIcon from "@mui/icons-material/StyleOutlined";
+import DesignServicesOutlinedIcon from "@mui/icons-material/DesignServicesOutlined";
+import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
+import { Container, Typography, Button, Box, Grid } from "@mui/material";
 import Image from "next/image";
-import styles from "./page.module.css";
+import OurProjectsSection from "@/components/OurProjectsSection";
+import LatestWorkSection from "@/components/LatestWorkSection";
+import PartnersInInnovation from "@/components/PartnersInInnovation";
+import ContactSection from "@/components/ContactSection";
+import MeetTheCreativeMinds from "@/components/MeetTheCreativeMinds";
 
 export default function Home() {
+  const serviceCard = [
+    {
+      iconItem: ArchitectureOutlinedIcon,
+      title: "Interior Design",
+      des: "Creating inspiring and functional interior spaces tailored to your lifestyle.",
+      btn: "Learn More",
+      slug: "interior-design",
+    },
+    {
+      iconItem: ChairOutlinedIcon,
+      title: "Furniture Design",
+      des: "Custom-designed furniture pieces crafted with precision, comfort, and elegance.",
+      btn: "Learn More",
+      slug: "furniture-design",
+    },
+    {
+      iconItem: WeekendOutlinedIcon,
+      title: "Space Planning",
+      des: "Smart layout optimization ensuring maximum functionality and visual balance.",
+      btn: "Learn More",
+      slug: "space-planning",
+    },
+    {
+      iconItem: LightModeOutlinedIcon,
+      title: "Lighting Design",
+      des: "Creative lighting concepts that elevate ambience and enhance visual appeal.",
+      btn: "Learn More",
+      slug: "lighting-design",
+    },
+    {
+      iconItem: FormatPaintOutlinedIcon,
+      title: "Material & Finish Consultancy",
+      des: "Expert guidance on material selection, textures, and finishes to bring your design vision to life.",
+      btn: "Learn More",
+      slug: "material-finish-consultancy",
+    },
+    {
+      iconItem: StyleOutlinedIcon,
+      title: "Art & Decor Curation",
+      des: "Handpicked artwork, decor pieces, and styling elements that complement your interior’s narrative.",
+      btn: "Learn More",
+      slug: "art-decor-curation",
+    },
+    {
+      iconItem: DesignServicesOutlinedIcon,
+      title: "Turnkey Solutions",
+      des: "From concept to completion — a seamless, one-stop design & execution service.",
+      btn: "Learn More",
+      slug: "turnkey-solutions",
+    },
+    {
+      iconItem: PrecisionManufacturingOutlinedIcon,
+      title: "Custom Fabrication",
+      des: "Bespoke installations and built-in furniture tailored for unique spaces.",
+      btn: "Learn More",
+      slug: "custom-fabrication",
+    },
+  ];
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Hero></Hero>
+      <Box
+        sx={{
+          textAlign: "center",
+          width: "90%",
+          maxWidth: "1720px",
+          mx: "auto",
+        }}
+      >
+        <Typography
+          variant="h3"
+          fontWeight="bold"
+          sx={{
+            fontSize: 13,
+            letterSpacing: 8,
+            textTransform: "uppercase",
+            mt: 12,
+          }}
+          mb={2}
+        >
+          L A T E S T &nbsp; W O R K
+        </Typography>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Typography
+          sx={{
+            color: "rgba(0,0,0,0.6)",
+            fontSize: 14,
+            maxWidth: 700,
+            mx: "auto",
+            mb: 8,
+          }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          A curation of our most recent projects that redefine modern design —
+          where creativity meets precision and purpose.
+        </Typography>
+
+        {/* latest work start*/}
+
+        <LatestWorkSection />
+
+        {/* latest work ends*/}
+      </Box>
+      {/* company overview video */}
+      <Box
+        sx={{ position: "relative", height: "100vh", overflow: "hidden" }}
+        mt={16}
+      >
+        {/* Background Video */}
+        <Box
+          component="video"
+          src="/assets/home/background.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: -1, // Behind content
+          }}
+        />
+
+        {/* Content Overlay */}
+        <Container
+          sx={{
+            position: "relative",
+            zIndex: 1,
+            height: "100%",
+            display: "flex",
+            alignItems: "flex-end", // ✅ Changed from "center" to "flex-end"
+            pb: 8, // ✅ Add padding at bottom for spacing
+          }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <Box sx={{ color: "white", textAlign: "center", width: "100%" }}>
+            <Typography variant="h7" fontWeight="bold">
+              A R E T E
+            </Typography>
+            <Typography fontSize={12} mt={2}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries,
+            </Typography>
+          </Box>
+        </Container>
+
+        {/* Dark Overlay for better text readability */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+
+            zIndex: 0,
+          }}
+        />
+      </Box>
+      {/* our service start */}
+      <Typography
+        variant="h3"
+        fontWeight="bold"
+        sx={{
+          fontSize: 13,
+          letterSpacing: 8,
+          textTransform: "uppercase",
+          mt: 12,
+          textAlign: "center",
+        }}
+        mb={2}
+      >
+        O U R &nbsp; S E R V I C E S
+      </Typography>
+
+      <Typography
+        sx={{
+          color: "rgba(0,0,0,0.6)",
+          fontSize: 14,
+          maxWidth: 700,
+          mx: "auto",
+          mb: 8,
+          textAlign: "center",
+        }}
+      >
+        From concept to completion — we deliver holistic design solutions that
+        blend innovation, functionality, and elegance.
+      </Typography>
+
+      <Box sx={{ width: "90%", maxWidth: "1720px", margin: "0 auto", mt: 8 }}>
+        <Grid container spacing={2}>
+          {serviceCard.slice(0, 8).map((item, index) => (
+            <Grid size={{ xs: 12, md: 3 }} key={index}>
+              <ServiceCards {...item} slug={item.slug} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+      {/* our service end */}
+      {/* main projects  */}
+      <OurProjectsSection />
+      {/* project ends */}
+      {/* our partners starts */}
+      <PartnersInInnovation />
+      {/* our projects ends  */}
+      {/* contact start */}
+      <ContactSection />
+      {/* contact start */}
+      {/* Creative Minds start */}
+      <MeetTheCreativeMinds />
+      {/* Creative Minds sends  */}
+    </>
   );
 }
