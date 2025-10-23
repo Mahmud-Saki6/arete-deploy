@@ -1,106 +1,35 @@
 "use client";
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 
 export default function Gallery() {
   const galleryItems = [
-    {
-      type: "video",
-      src: "/assets/home/office.mp4",
-      title: "Workspace Tour",
-      category: "Office",
-    },
-    {
-      type: "image",
-      src: "/assets/home/outside.jpeg",
-      title: "Executive Suite",
-      category: "Corporate",
-    },
-
-    {
-      type: "image",
-      src: "/assets/home/chair.jpeg",
-      title: "Art Installation",
-      category: "Decor",
-    },
-    {
-      type: "image",
-      src: "/assets/home/sofa.jpeg",
-      title: "Modern Lounge",
-      category: "Residential",
-    },
-    {
-      type: "video",
-      src: "/assets/home/furniture.mp4",
-      title: "Design Process",
-      category: "Behind Scenes",
-    },
-    {
-      type: "video",
-      src: "/assets/home/lighting.mp4",
-      title: "Conference Room",
-      category: "Corporate",
-    },
-    {
-      type: "image",
-      src: "/assets/home/table.jpeg",
-      title: "Collaborative Space",
-      category: "Workspace",
-    },
+    { type: "video", src: "/assets/home/office.mp4" },
+    { type: "image", src: "/assets/home/outside.jpeg" },
+    { type: "image", src: "/assets/home/another-meeting.jpeg" },
+    { type: "image", src: "/assets/home/sofa.jpeg" },
+    { type: "video", src: "/assets/home/furniture.mp4" },
+    // ✅ Swapped order below
+    { type: "image", src: "/assets/home/wall.jpeg" },
+    { type: "video", src: "/assets/home/lighting.mp4" },
   ];
-
-  // Custom grid layout with varied sizes
-  const getGridStyle = (index) => {
-    const styles = [
-      { gridColumn: "span 2", gridRow: "span 1" },
-      { gridColumn: "span 1", gridRow: "span 2" },
-      { gridColumn: "span 2", gridRow: "span 1" },
-      { gridColumn: "span 2", gridRow: "span 1" },
-      { gridColumn: "span 2", gridRow: "span 2" },
-      { gridColumn: "span 1", gridRow: "span 1" },
-      { gridColumn: "span 2", gridRow: "span 1" },
-      { gridColumn: "span 2", gridRow: "span 1" },
-      { gridColumn: "span 1", gridRow: "span 1" },
-      { gridColumn: "span 1", gridRow: "span 2" },
-    ];
-    return styles[index % styles.length];
-  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
+      transition: { staggerChildren: 0.15 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9 },
+    hidden: { opacity: 0, y: 60, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    },
-  };
-
-  const hoverVariants = {
-    hover: {
-      scale: 1.02,
-      y: -8,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
     },
   };
 
@@ -152,7 +81,8 @@ export default function Gallery() {
           where creativity meets precision and purpose.
         </Typography>
       </motion.div>
-      {/* Dynamic Masonry Grid */}
+
+      {/* Grid System with motion applied */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -162,79 +92,142 @@ export default function Gallery() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gridAutoRows: "200px",
-            gap: "24px",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(8, 1fr)",
+              md: "repeat(12, 1fr)",
+            },
+            gap: { xs: 2, md: 2 },
             gridAutoFlow: "dense",
+            "& .cell": {
+              position: "relative",
+              overflow: "hidden",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+            },
           }}
         >
-          {galleryItems.map((item, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                boxShadow: "0 12px 40px rgba(0,0,0,0.15)",
-                ...getGridStyle(index),
-              }}
-            >
-              {/* Media Container */}
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                {item.type === "image" ? (
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    style={{
-                      objectFit: "fit",
-                      transition: "transform 0.6s ease",
-                    }}
-                  />
-                ) : (
-                  <video
-                    src={item.src}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                )}
+          {/* ROW 1 */}
+          <motion.div
+            className="cell"
+            variants={itemVariants}
+            style={{
+              gridColumn: "1 / span 8",
+              height: "370px",
+            }}
+          >
+            <video
+              src={galleryItems[4].src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </motion.div>
 
-                {/* Gradient Overlay */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "60%",
-                    background:
-                      "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)",
-                    opacity: 0,
-                    transition: "opacity 0.4s ease",
-                  }}
-                  className="gradient-overlay"
-                />
+          <motion.div
+            className="cell"
+            variants={itemVariants}
+            style={{
+              gridColumn: "9 / span 4",
+              height: "370px",
+            }}
+          >
+            <Image
+              src={galleryItems[1].src}
+              alt="Gallery"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </motion.div>
 
-                {/* Bottom Info Bar */}
+          {/* ROW 2 */}
+          <motion.div
+            className="cell"
+            variants={itemVariants}
+            style={{
+              gridColumn: "1 / span 6",
+              height: "300px",
+            }}
+          >
+            <Image
+              src={galleryItems[2].src}
+              alt="Gallery"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </motion.div>
 
-                {/* Type Badge */}
-              </Box>
-            </motion.div>
-          ))}
+          <motion.div
+            className="cell"
+            variants={itemVariants}
+            style={{
+              gridColumn: "7 / span 6",
+              height: "300px",
+            }}
+          >
+            <Image
+              src={galleryItems[3].src}
+              alt="Gallery"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </motion.div>
+
+          {/* ROW 3 */}
+          <motion.div
+            className="cell"
+            variants={itemVariants}
+            style={{
+              gridColumn: "1 / span 5",
+              height: "300px",
+            }}
+          >
+            <video
+              src={galleryItems[0].src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </motion.div>
+
+          {/* Swapped: galleryItems[5] is now IMAGE */}
+          <motion.div
+            className="cell"
+            variants={itemVariants}
+            style={{
+              gridColumn: "6 / span 3",
+              height: "300px",
+            }}
+          >
+            <Image
+              src={galleryItems[5].src}
+              alt="Gallery"
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </motion.div>
+
+          {/* Swapped: galleryItems[6] is now VIDEO */}
+          <motion.div
+            className="cell"
+            variants={itemVariants}
+            style={{
+              gridColumn: "9 / span 4",
+              height: "300px",
+            }}
+          >
+            <video
+              src={galleryItems[6].src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </motion.div>
         </Box>
       </motion.div>
     </Box>
