@@ -17,6 +17,7 @@ import LatestWorkSection from "@/components/LatestWorkSection";
 import PartnersInInnovation from "@/components/PartnersInInnovation";
 import ContactSection from "@/components/ContactSection";
 import MeetTheCreativeMinds from "@/components/MeetTheCreativeMinds";
+import Gallery from "@/components/Gallery";
 
 export default function Home() {
   const serviceCard = [
@@ -229,6 +230,9 @@ export default function Home() {
       {/* our partners starts */}
       <PartnersInInnovation />
       {/* our projects ends  */}
+      {/* Gallery start */}
+      <Gallery />
+      {/* Gallery Ends */}
       {/* contact start */}
       <ContactSection />
       {/* contact start */}
