@@ -7,7 +7,7 @@ export default function Gallery() {
   const galleryItems = [
     { type: "video", src: "/assets/home/office.mp4" },
     { type: "image", src: "/assets/home/outside.jpeg" },
-    { type: "image", src: "/assets/home/another-meeting.jpeg" },
+    { type: "image", src: "/assets/home/latest5.jpeg" },
     { type: "image", src: "/assets/home/sofa.jpeg" },
     { type: "video", src: "/assets/home/furniture.mp4" },
     // ✅ Swapped order below
