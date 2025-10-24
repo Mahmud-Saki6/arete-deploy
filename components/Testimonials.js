@@ -64,7 +64,7 @@ export default function Testimonials() {
 
   useEffect(() => {
     if (hovering) return;
-    timerRef.current = setInterval(() => paginate(1), 5000);
+    timerRef.current = setInterval(() => paginate(1), 10000);
     return () => clearInterval(timerRef.current);
   }, [hovering]);
 
