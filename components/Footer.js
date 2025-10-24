@@ -138,7 +138,7 @@ export default function Footer() {
             }}
           >
             <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-              SERVICES
+              DESIGN
             </Typography>
             <Link
               href="#"
@@ -196,7 +196,7 @@ export default function Footer() {
             }}
           >
             <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-              PRODUCTS
+              PORTFOLIOS
             </Typography>
             <Link
               href="#"
