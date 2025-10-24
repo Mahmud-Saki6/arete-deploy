@@ -18,6 +18,7 @@ import PartnersInInnovation from "@/components/PartnersInInnovation";
 import ContactSection from "@/components/ContactSection";
 import MeetTheCreativeMinds from "@/components/MeetTheCreativeMinds";
 import Gallery from "@/components/Gallery";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   const serviceCard = [
@@ -239,6 +240,9 @@ export default function Home() {
       {/* Creative Minds start */}
       <MeetTheCreativeMinds />
       {/* Creative Minds sends  */}
+      {/* Testimonials start */}
+      <Testimonials />
+      {/* Testimonials ends */}
     </>
   );
 }

@@ -10,7 +10,6 @@ export default function Gallery() {
     { type: "image", src: "/assets/home/latest5.jpeg" },
     { type: "image", src: "/assets/home/sofa.jpeg" },
     { type: "video", src: "/assets/home/furniture.mp4" },
-    // ✅ Swapped order below
     { type: "image", src: "/assets/home/wall.jpeg" },
     { type: "video", src: "/assets/home/lighting.mp4" },
   ];
@@ -82,7 +81,7 @@ export default function Gallery() {
         </Typography>
       </motion.div>
 
-      {/* Grid System with motion applied */}
+      {/* Grid System */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -93,11 +92,11 @@ export default function Gallery() {
           sx={{
             display: "grid",
             gridTemplateColumns: {
-              xs: "1fr",
-              sm: "repeat(8, 1fr)",
-              md: "repeat(12, 1fr)",
+              xs: "1fr", // single column on phones
+              sm: "repeat(6, 1fr)", // 6 columns on tablets
+              md: "repeat(12, 1fr)", // 12 columns on laptops/desktops
             },
-            gap: { xs: 2, md: 2 },
+            gap: { xs: 2, sm: 2.5, md: 2 },
             gridAutoFlow: "dense",
             "& .cell": {
               position: "relative",
@@ -193,7 +192,7 @@ export default function Gallery() {
             />
           </motion.div>
 
-          {/* Swapped: galleryItems[5] is now IMAGE */}
+          {/* IMAGE */}
           <motion.div
             className="cell"
             variants={itemVariants}
@@ -210,7 +209,7 @@ export default function Gallery() {
             />
           </motion.div>
 
-          {/* Swapped: galleryItems[6] is now VIDEO */}
+          {/* VIDEO */}
           <motion.div
             className="cell"
             variants={itemVariants}
