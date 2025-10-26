@@ -169,7 +169,7 @@ export default function LatestWorkSection() {
                   sx={{
                     position: "relative",
                     width: "100%",
-                    height: 550,
+                    height: 450,
                     overflow: "hidden",
                     borderRadius: 4,
                     cursor: "pointer",
@@ -440,14 +440,14 @@ export default function LatestWorkSection() {
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
             variant="contained"
-            size="large"
+            size="medium"
             sx={{
               backgroundColor: "black",
               color: "white",
               borderRadius: "50px",
-              px: 6,
+              px: 4,
               py: 1.5,
-              fontWeight: "bold",
+              fontWeight: "regular",
               letterSpacing: 1.5,
               fontSize: "1rem",
               boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
