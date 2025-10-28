@@ -94,20 +94,20 @@ export default function Home() {
           variant="h3"
           fontWeight="bold"
           sx={{
-            fontSize: 13,
-            letterSpacing: 8,
+            fontSize: { xs: 11, md: 14 },
+            letterSpacing: 9,
             textTransform: "uppercase",
             mt: 12,
           }}
           mb={2}
         >
-          L A T E S T &nbsp; W O R K
+          LATEST&nbsp;WORK
         </Typography>
 
         <Typography
           sx={{
             color: "rgba(0,0,0,0.6)",
-            fontSize: 14,
+            fontSize: { xs: 11, md: 14 },
             maxWidth: 700,
             mx: "auto",
             mb: 8,
@@ -190,21 +190,21 @@ export default function Home() {
         variant="h3"
         fontWeight="bold"
         sx={{
-          fontSize: 13,
-          letterSpacing: 8,
+          fontSize: { xs: 11, md: 14 },
+          letterSpacing: 9,
           textTransform: "uppercase",
           mt: 12,
           textAlign: "center",
         }}
         mb={2}
       >
-        O U R &nbsp; S E R V I C E S
+        OUR&nbsp;SERVICES
       </Typography>
 
       <Typography
         sx={{
           color: "rgba(0,0,0,0.6)",
-          fontSize: 14,
+          fontSize: { xs: 11, md: 14 },
           maxWidth: 700,
           mx: "auto",
           mb: 8,
@@ -225,24 +225,18 @@ export default function Home() {
         </Grid>
       </Box>
       {/* our service end */}
-      {/* main projects  */}
+
       <OurProjectsSection />
-      {/* project ends */}
-      {/* our partners starts */}
+
       <PartnersInInnovation />
-      {/* our projects ends  */}
-      {/* Gallery start */}
+
       <Gallery />
-      {/* Gallery Ends */}
-      {/* contact start */}
+
       <ContactSection />
-      {/* contact start */}
-      {/* Creative Minds start */}
+
       <MeetTheCreativeMinds />
-      {/* Creative Minds sends  */}
-      {/* Testimonials start */}
+
       <Testimonials />
-      {/* Testimonials ends */}
     </>
   );
 }

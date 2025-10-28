@@ -1,5 +1,5 @@
 "use client";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import { Box, Typography, Button, Grid, Stack } from "@mui/material";
 import Image from "next/image";
 
 export default function OurProjectsSection() {
@@ -30,20 +30,20 @@ export default function OurProjectsSection() {
         variant="h3"
         fontWeight="bold"
         sx={{
-          fontSize: 13,
-          letterSpacing: 8,
+          fontSize: { xs: 11, md: 14 },
+          letterSpacing: 9,
           textTransform: "uppercase",
           mt: 12,
         }}
         mb={2}
       >
-        C R A F T E D &nbsp; S P A C E S
+        DESIGN&nbsp;WORKS
       </Typography>
 
       <Typography
         sx={{
           color: "rgba(0,0,0,0.6)",
-          fontSize: 14,
+          fontSize: { xs: 11, md: 14 },
           maxWidth: 700,
           mx: "auto",
           mb: 8,
@@ -52,7 +52,6 @@ export default function OurProjectsSection() {
         From corporate offices to modern homes — our design philosophy bridges
         aesthetics, innovation, and timeless elegance.
       </Typography>
-
       <Grid container spacing={4}>
         {projects.map((project, index) => (
           <Grid

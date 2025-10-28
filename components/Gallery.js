@@ -40,6 +40,7 @@ export default function Gallery() {
         mx: "auto",
         textAlign: "center",
         mb: 16,
+        display: { xs: "none", md: "block" }, // Hide entire gallery on mobile
       }}
     >
       {/* Section Title */}
@@ -53,8 +54,8 @@ export default function Gallery() {
           variant="h3"
           fontWeight="bold"
           sx={{
-            fontSize: 13,
-            letterSpacing: 8,
+            fontSize: { xs: 11, md: 14 },
+            letterSpacing: 9,
             textTransform: "uppercase",
             mb: 2,
             background: "linear-gradient(45deg, #000 30%, #666 90%)",
@@ -63,13 +64,13 @@ export default function Gallery() {
             color: "transparent",
           }}
         >
-          G A L L E R Y
+          GALLERY
         </Typography>
 
         <Typography
           sx={{
             color: "rgba(0,0,0,0.6)",
-            fontSize: 14,
+            fontSize: { xs: 11, md: 14 },
             maxWidth: 700,
             mx: "auto",
             mb: 8,

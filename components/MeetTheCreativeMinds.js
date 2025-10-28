@@ -34,14 +34,14 @@ export default function MeetTheCreativeMinds() {
         variant="h3"
         fontWeight="bold"
         sx={{
-          fontSize: 13,
-          letterSpacing: 8,
+          fontSize: { xs: 11, md: 14 },
+          letterSpacing: 9,
           textTransform: "uppercase",
           mt: 12,
           mb: 12,
         }}
       >
-        Meet The Creative Minds
+        THE VISIONARIES
       </Typography>
 
       <Box

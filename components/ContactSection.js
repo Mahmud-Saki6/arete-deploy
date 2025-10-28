@@ -32,14 +32,14 @@ export default function ContactSection() {
           variant="h3"
           fontWeight="bold"
           sx={{
-            fontSize: 13,
-            letterSpacing: 8,
+            fontSize: { xs: 11, md: 14 },
+            letterSpacing: 9,
             textTransform: "uppercase",
             mb: 12,
             color: "#a8a7a6da",
           }}
         >
-          LET&apos;S DESIGN YOUR NEXT SPACE TOGETHER
+          START&nbsp;CREATING
         </Typography>
 
         <Grid

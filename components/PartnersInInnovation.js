@@ -30,20 +30,20 @@ export default function PartnersSection() {
         variant="h3"
         fontWeight="bold"
         sx={{
-          fontSize: 13,
-          letterSpacing: 8,
+          fontSize: { xs: 11, md: 14 },
+          letterSpacing: 9,
           textTransform: "uppercase",
           mt: 12,
         }}
         mb={2}
       >
-        partners &nbsp;in&nbsp; innovation
+        DESIGN&nbsp;PARTNERS
       </Typography>
 
       <Typography
         sx={{
           color: "rgba(0,0,0,0.6)",
-          fontSize: 14,
+          fontSize: { xs: 11, md: 14 },
           maxWidth: 700,
           mx: "auto",
           mb: 8,
