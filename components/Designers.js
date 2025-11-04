@@ -3,32 +3,51 @@ import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function MeetTheCreativeMinds() {
+export default function Designers() {
   const teamMembers = [
     {
-      name: "John Doe",
-      role: "Founder & Creative Director",
+      name: "Sarah Chen",
+      role: "Senior Interior Designer",
       img: "/assets/home/profile1.png",
     },
     {
-      name: "Jane Smith",
-      role: "Co-Founder & Head of Design",
+      name: "Marcus Rodriguez",
+      role: "Architectural Designer",
       img: "/assets/home/profile2.png",
     },
     {
-      name: "Alex Lee",
-      role: "Lead Architect",
+      name: "Aisha Khan",
+      role: "Residential Design Specialist",
       img: "/assets/home/profile3.png",
     },
     {
-      name: "Priya Rahman",
-      role: "Interior Design Specialist",
+      name: "David Kim",
+      role: "3D Visualization Expert",
+      img: "/assets/home/profile4.png",
+    },
+    {
+      name: "Elena Petrova",
+      role: "Lighting Design Consultant",
+      img: "/assets/home/profile1.png",
+    },
+    {
+      name: "James Wilson",
+      role: "Project Manager",
+      img: "/assets/home/profile3.png",
+    },
+    {
+      name: "Maya Sharma",
+      role: "Furniture & Textile Designer",
+      img: "/assets/home/profile2.png",
+    },
+    {
+      name: "Carlos Mendez",
+      role: "Sustainable Design Expert",
       img: "/assets/home/profile4.png",
     },
   ];
-
   return (
-    <Box sx={{ textAlign: "center", my: 12 }}>
+    <Box sx={{ textAlign: "center", mb: 12 }}>
       {/* Section Title */}
       <Typography
         variant="h3"
@@ -37,15 +56,18 @@ export default function MeetTheCreativeMinds() {
           fontSize: { xs: 11, md: 14 },
           letterSpacing: 9,
           textTransform: "uppercase",
-          mt: 12,
+
           mb: 12,
         }}
       >
-        THE VISIONARIES
+        DESIGN TEAM
       </Typography>
 
       <Box
         sx={{
+          width: "90%",
+          maxWidth: "1720px",
+          margin: "0 auto",
           display: "flex",
           justifyContent: "center",
           gap: 8,

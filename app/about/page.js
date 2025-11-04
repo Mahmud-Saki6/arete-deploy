@@ -10,6 +10,8 @@ import {
   Grid,
   Stack,
 } from "@mui/material";
+import Designers from "@/components/Designers";
+import Faq from "@/components/Faq";
 
 export default function AboutHero() {
   const theme = useTheme();
@@ -32,7 +34,7 @@ export default function AboutHero() {
           sx={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "url('/assets/about/heroimg.jpeg')",
+            backgroundImage: "url('/assets/about/newhero.jpeg')",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
@@ -427,6 +429,78 @@ export default function AboutHero() {
           </Grid>
         </Box>
       </Grid>
+      <Designers />
+      <Faq />
+      {/* contact us part */}
+      <Box
+        sx={{
+          textAlign: "center",
+          bgcolor: "#fffaf074",
+          color: "#2c3e50",
+          borderRadius: 2,
+          py: 8,
+          px: 4,
+
+          border: "1px solid rgba(200, 155, 60, 0.2)",
+          boxShadow: "0 4px 20px rgba(200, 155, 60, 0.1)",
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 700,
+            mb: 3,
+            fontSize: { xs: "0.90rem", md: "1.75rem" },
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Ready to Create Exceptional Spaces with Arete?
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: 400,
+            mb: 4,
+            opacity: 0.8,
+            fontSize: { xs: "0.70rem", md: "0.95rem" },
+            maxWidth: "600px",
+            mx: "auto",
+            lineHeight: 1.6,
+          }}
+        >
+          Join our team of passionate designers and craftsmen dedicated to
+          transforming visions into reality.
+        </Typography>
+        <Button
+          variant="contained"
+          size="large"
+          sx={{
+            bgcolor: "#C89B3C",
+            color: "white",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            px: 4,
+            py: 1.25,
+            fontSize: { xs: "0.60rem", md: "0.85rem" },
+            fontWeight: 600,
+            borderRadius: "6px",
+            transition: "all 0.3s ease",
+            minWidth: "200px",
+            "&:hover": {
+              bgcolor: "#B88A2A",
+              transform: "translateY(-2px)",
+              boxShadow: "0 6px 16px rgba(200, 155, 60, 0.3)",
+            },
+          }}
+          onClick={() => {
+            document.getElementById("contact-section")?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
+        >
+          Join Our Team
+        </Button>
+      </Box>
     </>
   );
 }
