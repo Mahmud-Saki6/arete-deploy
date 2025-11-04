@@ -332,22 +332,34 @@ export default function Hero() {
                           opacity: 1,
                         }}
                       >
+                        {/* Button */}
                         <Button
-                          variant="contained"
-                          color="primary"
-                          size={isMobile ? "small" : "large"} // Reduced from medium to small on mobile
+                          variant="outlined"
+                          size={isMobile ? "small" : "medium"}
                           sx={{
-                            borderRadius: "8px",
-                            px: { xs: 3, md: 5 }, // Reduced padding on mobile
-                            py: { xs: 0.75, md: 1.5 }, // Reduced padding on mobile
+                            borderColor: "#C89B3C",
+                            color: "#fff",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.1em",
+                            px: { xs: 3, md: 5 },
+                            py: { xs: 0.75, md: 1.2 },
+                            fontWeight: 600,
+                            borderRadius: "30px",
                             fontSize: {
-                              xs: "0.8rem", // Smaller font size on mobile
-                              md: "1rem",
+                              xs: "0.8rem",
+                              md: "0.9rem",
                             },
-                            minWidth: { xs: "120px", md: "auto" },
+                            minWidth: { xs: "140px", md: "auto" },
+                            transition: "all 0.4s ease",
+                            "&:hover": {
+                              bgcolor: "#C89B3C",
+                              color: "#000",
+                              borderColor: "#C89B3C",
+                              transform: "translateY(-3px)",
+                            },
                           }}
                         >
-                          Explore Now
+                          Discover More
                         </Button>
                       </Box>
                     </Box>

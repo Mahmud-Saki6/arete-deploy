@@ -123,7 +123,7 @@ export default function Home() {
 
         {/* latest work ends*/}
       </Box>
-      {/* company overview video */}
+      {/* company overview video starts*/}
       <Box
         sx={{ position: "relative", height: "100vh", overflow: "hidden" }}
         mt={16}
@@ -185,6 +185,7 @@ export default function Home() {
           }}
         />
       </Box>
+      {/* company overview video ends */}
       {/* our service start */}
       <Typography
         variant="h3"
