@@ -43,7 +43,7 @@ export default function Faq() {
   };
 
   return (
-    <Box sx={{ py: 8, bgcolor: "#f8f9fa" }}>
+    <Box sx={{ py: 8, bgcolor: "#f8f9faba" }}>
       <Container maxWidth="lg">
         {/* Section Title - Centered */}
         <Box sx={{ textAlign: "center", mb: 6 }}>

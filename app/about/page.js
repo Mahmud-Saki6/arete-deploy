@@ -435,7 +435,7 @@ export default function AboutHero() {
       <Box
         sx={{
           textAlign: "center",
-          bgcolor: "#fffaf074",
+          bgcolor: "#F5F1E5",
           color: "#2c3e50",
           borderRadius: 2,
           py: 8,
