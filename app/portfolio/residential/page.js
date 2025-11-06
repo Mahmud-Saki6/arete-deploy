@@ -148,7 +148,7 @@ export default function Residential() {
       <Box
         sx={{
           mt: 12,
-          mb: 14,
+          mb: 12,
           position: "relative",
           overflow: "hidden",
         }}
