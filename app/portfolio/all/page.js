@@ -11,6 +11,8 @@ import {
   Stack,
 } from "@mui/material";
 import ResidentialProjects from "@/components/ResidentialProjects";
+import CommercialProjects from "@/components/CommercialProjects";
+import ProjectGallery from "@/components/ProjectGallery";
 
 export default function AllProjects() {
   const theme = useTheme();
@@ -165,7 +167,7 @@ export default function AllProjects() {
         sx={{
           mt: { xs: 4, md: 6 },
           mb: { xs: 4, md: 6 },
-          py: { xs: 6, md: 8 },
+          py: { xs: 6, md: 6 },
           background: "linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)",
           position: "relative",
           overflow: "hidden",
@@ -176,8 +178,6 @@ export default function AllProjects() {
             left: 0,
             right: 0,
             height: "1px",
-            background:
-              "linear-gradient(90deg, transparent, #C89B3C, transparent)",
           },
         }}
       >
@@ -204,7 +204,7 @@ export default function AllProjects() {
             width: "200px",
             height: "200px",
             background:
-              "radial-gradient(circle, rgba(200, 156, 60, 0.37) 0%, transparent 40%)",
+              "radial-gradient(circle,rgba(200, 156, 60, 0.37) 0%, transparent 40%)",
             borderRadius: "50%",
             display: { xs: "none", md: "block" },
           }}
@@ -223,7 +223,7 @@ export default function AllProjects() {
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: "2.5rem", md: "3.5rem" },
+                fontSize: { xs: "2.0rem", md: "2.7rem" },
                 fontWeight: 300,
                 lineHeight: 1.1,
                 mb: 4,
@@ -250,7 +250,7 @@ export default function AllProjects() {
             <Typography
               sx={{
                 color: "rgba(44, 62, 80, 0.8)",
-                fontSize: "1.2rem",
+                fontSize: "0.95rem",
                 lineHeight: 1.7,
                 mb: 12,
                 mx: "auto",
@@ -370,7 +370,7 @@ export default function AllProjects() {
                 p: 3,
                 backgroundColor: "rgba(255, 255, 255, 0.29)",
                 borderRadius: "12px",
-                border: "2px solid rgba(200, 155, 60, 0.1)",
+                border: "3px solid rgba(200, 155, 60, 0.1)",
               }}
             >
               <Typography
@@ -405,7 +405,7 @@ export default function AllProjects() {
           color: "#2c3e50",
         }}
       >
-        RESIDENTIAL COLLECTION
+        PROJECT CATEGORIES
       </Typography>
 
       <Typography
@@ -420,11 +420,11 @@ export default function AllProjects() {
           lineHeight: 1.4,
         }}
       >
-        Explore our journey through exceptional home designs — from urban
-        apartments to luxury villas, each telling a unique story of living well.
+        Browse our complete collection organized by space types and design
+        categories
       </Typography>
 
-      <ResidentialProjects />
+      <ProjectGallery />
 
       {/* contact us part */}
       <Box
