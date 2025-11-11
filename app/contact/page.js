@@ -71,11 +71,7 @@ export default function ContactUs() {
       answer:
         "The timeline varies based on project scope, but most residential projects take 8-16 weeks from concept to completion. Commercial projects may take 12-24 weeks depending on size and complexity.",
     },
-    {
-      question: "Do you work within a specific budget?",
-      answer:
-        "Yes, we work closely with clients to establish a realistic budget upfront and provide transparent cost breakdowns. We're experienced in delivering exceptional results across various budget ranges.",
-    },
+
     {
       question: "What services are included in your interior design package?",
       answer:
@@ -278,7 +274,15 @@ export default function ContactUs() {
           }}
         />
 
-        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 1,
+            width: "90%",
+            maxWidth: "1720px",
+            mx: "auto",
+          }}
+        >
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -329,7 +333,7 @@ export default function ContactUs() {
             {/* Contact Cards Grid */}
             <Grid container spacing={3} justifyContent="center">
               {contactItems.map((item, index) => (
-                <Grid item size={{ xs: 12, md: 3 }} key={index}>
+                <Grid item xs={12} sm={6} md={3} key={index}>
                   <motion.div variants={itemVariants}>
                     <Card
                       sx={{
@@ -466,12 +470,12 @@ export default function ContactUs() {
               ))}
             </Grid>
           </motion.div>
-        </Container>
+        </Box>
       </Box>
 
-      {/* ===== CONTACT FORM SECTION ===== */}
+      {/* ===== CONTACT FORM & FAQ SECTION ===== */}
       <Box sx={{ bgcolor: "#f8f9fa", py: { xs: 8, md: 12 } }}>
-        <Container maxWidth="lg">
+        <Box sx={{ width: "90%", maxWidth: "1720px", mx: "auto" }}>
           <Grid
             container
             spacing={6}
@@ -799,7 +803,26 @@ export default function ContactUs() {
               </motion.div>
             </Grid>
           </Grid>
-        </Container>
+
+          {/* Map Section */}
+          <Box
+            sx={{
+              borderRadius: 2,
+              overflow: "hidden",
+              boxShadow: "0 8px 30px rgba(0,0,0,0.3)",
+              mt: 8,
+            }}
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.902885627972!2d90.41319427538893!3d23.75087658879652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b1d9a1a1c1%3A0x9e3f9a3dd9b9d902!2sGulshan%20Avenue!5e0!3m2!1sen!2sbd!4v1698237760000!5m2!1sen!2sbd"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+            ></iframe>
+          </Box>
+        </Box>
       </Box>
     </>
   );
