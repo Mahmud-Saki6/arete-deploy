@@ -17,6 +17,8 @@ import {
   MenuItem,
   InputLabel,
   Collapse,
+  Alert,
+  CircularProgress,
 } from "@mui/material";
 import {
   FaPhone,
@@ -33,6 +35,18 @@ export default function ContactUs() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [expanded, setExpanded] = useState(Array(6).fill(false));
+
+  // Form state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    projectLocation: "",
+    email: "",
+    phone: "",
+    service: "",
+    projectDetails: "",
+  });
 
   const contactItems = [
     {
@@ -120,6 +134,68 @@ export default function ContactUs() {
     const newExpanded = [...expanded];
     newExpanded[index] = !newExpanded[index];
     setExpanded(newExpanded);
+  };
+
+  // Form handlers
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // ===== FIXED handleSubmit FUNCTION =====
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitResult(null);
+
+    try {
+      console.log("📤 Sending form data to PHP...");
+
+      const response = await fetch("http://localhost/arete/contact-form.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      console.log("📨 PHP response:", result);
+
+      if (result.success) {
+        setSubmitResult({
+          success: true,
+          message: result.message,
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          projectLocation: "",
+          email: "",
+          phone: "",
+          service: "",
+          projectDetails: "",
+        });
+      } else {
+        setSubmitResult({
+          success: false,
+          message: result.message || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("❌ Error:", error);
+      setSubmitResult({
+        success: false,
+        message:
+          "Form submission failed. Please check your connection and try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -523,15 +599,33 @@ export default function ContactUs() {
                   </motion.div>
                 </Box>
 
+                {/* Success/Error Alert */}
+                {submitResult && (
+                  <Alert
+                    severity={submitResult.success ? "success" : "error"}
+                    sx={{ mb: 3 }}
+                  >
+                    {submitResult.message}
+                  </Alert>
+                )}
+
                 {/* Contact Form */}
-                <Box component="form" sx={{ display: "grid", gap: 3 }}>
+                <Box
+                  component="form"
+                  onSubmit={handleSubmit}
+                  sx={{ display: "grid", gap: 3 }}
+                >
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
                         label="Name *"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         variant="outlined"
                         required
+                        disabled={isSubmitting}
                         sx={{
                           backgroundColor: "#fff",
                           borderRadius: 2,
@@ -545,8 +639,12 @@ export default function ContactUs() {
                       <TextField
                         fullWidth
                         label="Project Location *"
+                        name="projectLocation"
+                        value={formData.projectLocation}
+                        onChange={handleInputChange}
                         variant="outlined"
                         required
+                        disabled={isSubmitting}
                         sx={{
                           backgroundColor: "#fff",
                           borderRadius: 2,
@@ -563,9 +661,13 @@ export default function ContactUs() {
                       <TextField
                         fullWidth
                         label="Email *"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         variant="outlined"
                         required
                         type="email"
+                        disabled={isSubmitting}
                         sx={{
                           backgroundColor: "#fff",
                           borderRadius: 2,
@@ -579,7 +681,11 @@ export default function ContactUs() {
                       <TextField
                         fullWidth
                         label="Phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         variant="outlined"
+                        disabled={isSubmitting}
                         sx={{
                           backgroundColor: "#fff",
                           borderRadius: 2,
@@ -591,10 +697,13 @@ export default function ContactUs() {
                     </Grid>
                   </Grid>
 
-                  <FormControl fullWidth>
+                  <FormControl fullWidth disabled={isSubmitting}>
                     <InputLabel>Service You're Interested In *</InputLabel>
                     <Select
                       label="Service You're Interested In *"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
                       required
                       sx={{
                         backgroundColor: "#fff",
@@ -619,10 +728,14 @@ export default function ContactUs() {
                   <TextField
                     fullWidth
                     label="Tell us about your project *"
+                    name="projectDetails"
+                    value={formData.projectDetails}
+                    onChange={handleInputChange}
                     variant="outlined"
                     multiline
                     rows={4}
                     required
+                    disabled={isSubmitting}
                     sx={{
                       backgroundColor: "#fff",
                       borderRadius: 2,
@@ -637,6 +750,8 @@ export default function ContactUs() {
                       <Button
                         variant="contained"
                         size="large"
+                        type="submit"
+                        disabled={isSubmitting}
                         sx={{
                           background:
                             "linear-gradient(135deg, #C89B3C 0%, #8B4513 100%)",
@@ -654,12 +769,21 @@ export default function ContactUs() {
                             boxShadow: "0 12px 35px rgba(200, 155, 60, 0.4)",
                             transform: "translateY(-2px)",
                           },
+                          "&:disabled": {
+                            background: "#cccccc",
+                            transform: "none",
+                            boxShadow: "none",
+                          },
                           transition: "all 0.3s ease-in-out",
                           mt: 2,
+                          minWidth: 200,
                         }}
-                        type="submit"
                       >
-                        Submit Your Project
+                        {isSubmitting ? (
+                          <CircularProgress size={24} color="inherit" />
+                        ) : (
+                          "Submit Your Project"
+                        )}
                       </Button>
                     </Box>
                   </motion.div>
@@ -699,7 +823,7 @@ export default function ContactUs() {
             </Grid>
 
             {/* FAQ Section */}
-            <Grid size={{ xs: 12, md: 5 }}>
+            <Grid item xs={12} md={4}>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -820,6 +944,7 @@ export default function ContactUs() {
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
+              title="Arete Studio Location"
             ></iframe>
           </Box>
         </Box>
