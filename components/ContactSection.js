@@ -1,16 +1,84 @@
 "use client";
+import React, { useState } from "react";
 import {
   Box,
   Grid,
   TextField,
   Button,
   Typography,
-  Divider,
+  Alert,
+  CircularProgress,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaClock, FaPhone, FaEnvelope } from "react-icons/fa";
 
 export default function ContactSection() {
+  // Form state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    formType: "appointment", // Add this to distinguish from project inquiry form
+  });
+
+  // Form handlers
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitResult(null);
+
+    try {
+      const response = await fetch("http://localhost/arete/contact-form.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitResult({
+          success: true,
+          message:
+            "Thank you! Your appointment request has been sent successfully. We will contact you within 24 hours.",
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          formType: "appointment",
+        });
+      } else {
+        setSubmitResult({
+          success: false,
+          message: result.message || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitResult({
+        success: false,
+        message: "Network error. Please check your connection and try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -73,12 +141,32 @@ export default function ContactSection() {
                   Book an Appointment
                 </Typography>
 
-                <Box component="form" noValidate autoComplete="off">
+                {/* Success/Error Alert */}
+                {submitResult && (
+                  <Alert
+                    severity={submitResult.success ? "success" : "error"}
+                    sx={{ mb: 3 }}
+                  >
+                    {submitResult.message}
+                  </Alert>
+                )}
+
+                <Box
+                  component="form"
+                  noValidate
+                  autoComplete="off"
+                  onSubmit={handleSubmit}
+                >
                   <TextField
                     label="Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     fullWidth
                     margin="normal"
                     variant="filled"
+                    required
+                    disabled={isSubmitting}
                     InputProps={{
                       disableUnderline: true,
                       sx: { backgroundColor: "#f5e9db", borderRadius: 1 },
@@ -86,9 +174,15 @@ export default function ContactSection() {
                   />
                   <TextField
                     label="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     fullWidth
                     margin="normal"
                     variant="filled"
+                    type="email"
+                    required
+                    disabled={isSubmitting}
                     InputProps={{
                       disableUnderline: true,
                       sx: { backgroundColor: "#f5e9db", borderRadius: 1 },
@@ -96,9 +190,13 @@ export default function ContactSection() {
                   />
                   <TextField
                     label="Phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     fullWidth
                     margin="normal"
                     variant="filled"
+                    disabled={isSubmitting}
                     InputProps={{
                       disableUnderline: true,
                       sx: { backgroundColor: "#f5e9db", borderRadius: 1 },
@@ -106,11 +204,16 @@ export default function ContactSection() {
                   />
                   <TextField
                     label="Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     fullWidth
                     multiline
                     rows={4}
                     margin="normal"
                     variant="filled"
+                    required
+                    disabled={isSubmitting}
                     InputProps={{
                       disableUnderline: true,
                       sx: { backgroundColor: "#f5e9db", borderRadius: 1 },
@@ -127,6 +230,8 @@ export default function ContactSection() {
                   <Button
                     fullWidth
                     variant="contained"
+                    type="submit"
+                    disabled={isSubmitting}
                     sx={{
                       backgroundColor: "#8b4a25",
                       "&:hover": { backgroundColor: "#a0522d" },
@@ -135,9 +240,16 @@ export default function ContactSection() {
                       fontWeight: "bold",
                       color: "#fff",
                       textTransform: "none",
+                      "&:disabled": {
+                        backgroundColor: "#cccccc",
+                      },
                     }}
                   >
-                    Book Appointment
+                    {isSubmitting ? (
+                      <CircularProgress size={24} color="inherit" />
+                    ) : (
+                      "Book Appointment"
+                    )}
                   </Button>
                 </Box>
               </Box>
@@ -232,6 +344,7 @@ export default function ContactSection() {
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
+                  title="Arete Studio Location"
                 ></iframe>
               </Box>
             </motion.div>
