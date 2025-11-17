@@ -559,7 +559,7 @@ export default function ContactUs() {
             justifyContent="center"
           >
             {/* Contact Form */}
-            <Grid item xs={12} lg={8}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -616,7 +616,7 @@ export default function ContactUs() {
                   sx={{ display: "grid", gap: 3 }}
                 >
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <TextField
                         fullWidth
                         label="Name *"
@@ -635,7 +635,7 @@ export default function ContactUs() {
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <TextField
                         fullWidth
                         label="Project Location *"
@@ -657,7 +657,7 @@ export default function ContactUs() {
                   </Grid>
 
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <TextField
                         fullWidth
                         label="Email *"
@@ -677,7 +677,7 @@ export default function ContactUs() {
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                       <TextField
                         fullWidth
                         label="Phone"
@@ -733,7 +733,7 @@ export default function ContactUs() {
                     onChange={handleInputChange}
                     variant="outlined"
                     multiline
-                    rows={4}
+                    rows={5}
                     required
                     disabled={isSubmitting}
                     sx={{
@@ -823,7 +823,7 @@ export default function ContactUs() {
             </Grid>
 
             {/* FAQ Section */}
-            <Grid item xs={12} md={4}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <motion.div
                 initial="hidden"
                 whileInView="visible"

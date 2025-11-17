@@ -1,12 +1,24 @@
 "use client";
-import { Box, Typography, Button, Grid, Chip, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  IconButton,
+  Modal,
+  Button,
+} from "@mui/material";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import CloseIcon from "@mui/icons-material/Close";
+import Link from "next/link";
 
-export default function LatestWorkSection() {
+export default function ResidentialProjects() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // ========= PROJECT DATA =========
 
   const projects = [
     {
@@ -47,91 +59,40 @@ export default function LatestWorkSection() {
     },
   ];
 
+  // ========= HANDLERS =========
+  const handleOpenModal = (project) => setSelectedProject(project);
+  const handleCloseModal = () => setSelectedProject(null);
+
+  // ========= ANIMATIONS =========
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 60,
-      scale: 0.9,
-    },
+    hidden: { opacity: 0, y: 60, scale: 0.9 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
+      transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
     },
   };
 
   const imageVariants = {
-    hover: {
-      scale: 1.1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
+    hover: { scale: 1.1, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
-  const overlayVariants = {
-    initial: {
-      opacity: 0,
-      background: "rgba(0, 0, 0, 0)",
-    },
-    hover: {
+  const modalVariants = {
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
-      background: "rgba(0, 0, 0, 0.7)",
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.3, ease: "easeOut" },
     },
+    exit: { opacity: 0, transition: { duration: 0.2 } },
   };
 
-  const contentVariants = {
-    initial: {
-      opacity: 0,
-      y: 30,
-    },
-    hover: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const textItemVariants = {
-    initial: { opacity: 0, y: 20 },
-    hover: { opacity: 1, y: 0 },
-  };
-
-  const viewButtonVariants = {
-    initial: { scale: 0, opacity: 0 },
-    hover: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
+  // ========= RENDER =========
   return (
     <Box
       sx={{
@@ -139,17 +100,9 @@ export default function LatestWorkSection() {
         maxWidth: "1720px",
         mx: "auto",
         textAlign: "center",
+        mb: 12,
       }}
     >
-      {/* Section Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      ></motion.div>
-
-      {/* Projects Grid */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -158,7 +111,7 @@ export default function LatestWorkSection() {
       >
         <Grid container spacing={4}>
           {projects.map((project, index) => (
-            <Grid size={{ md: 6, xs: 12 }} key={index}>
+            <Grid size={{ xs: 12, md: 6 }} key={index}>
               <motion.div
                 variants={itemVariants}
                 whileHover="hover"
@@ -192,14 +145,12 @@ export default function LatestWorkSection() {
                       src={project.img}
                       alt={project.title}
                       fill
-                      style={{
-                        objectFit: "cover",
-                      }}
+                      style={{ objectFit: "cover" }}
                       priority={index < 2}
                     />
                   </motion.div>
 
-                  {/* Quick View Button - Always shows on hover */}
+                  {/* View Button */}
                   <Box
                     sx={{
                       position: "absolute",
@@ -209,6 +160,7 @@ export default function LatestWorkSection() {
                       zIndex: 3,
                       opacity: activeIndex === index ? 1 : 0,
                       transition: "opacity 0.3s ease",
+                      pointerEvents: activeIndex === index ? "auto" : "none",
                     }}
                   >
                     <motion.div
@@ -217,6 +169,10 @@ export default function LatestWorkSection() {
                       transition={{ duration: 0.3, ease: "easeOut" }}
                     >
                       <IconButton
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOpenModal(project);
+                        }}
                         sx={{
                           backgroundColor: "white",
                           color: "black",
@@ -235,169 +191,21 @@ export default function LatestWorkSection() {
                     </motion.div>
                   </Box>
 
-                  {/* Gradient Overlay */}
+                  {/* Title & Category */}
                   <Box
                     sx={{
                       position: "absolute",
                       bottom: 0,
                       left: 0,
                       width: "100%",
-                      height: "50%",
-                      background:
-                        "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)",
-                      opacity: activeIndex === index ? 0 : 0.7,
-                      transition: "opacity 0.3s ease",
-                    }}
-                  />
-
-                  {/* Hover Overlay */}
-                  <motion.div
-                    variants={overlayVariants}
-                    initial="initial"
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "white",
-                      padding: 4,
-                    }}
-                  >
-                    <motion.div
-                      variants={contentVariants}
-                      initial="initial"
-                      style={{
-                        textAlign: "center",
-                        width: "100%",
-                        maxWidth: "400px",
-                      }}
-                    >
-                      {/* Tags */}
-                      <motion.div variants={textItemVariants}>
-                        <Box
-                          sx={{
-                            mb: 2,
-                            display: "flex",
-                            gap: 1,
-                            justifyContent: "center",
-                            flexWrap: "wrap",
-                          }}
-                        >
-                          {project.tags.map((tag, tagIndex) => (
-                            <Chip
-                              key={tagIndex}
-                              label={tag}
-                              size="small"
-                              sx={{
-                                backgroundColor: "rgba(255,255,255,0.15)",
-                                color: "white",
-                                backdropFilter: "blur(10px)",
-                                border: "1px solid rgba(255,255,255,0.2)",
-                                fontSize: "0.7rem",
-                                height: "24px",
-                              }}
-                            />
-                          ))}
-                        </Box>
-                      </motion.div>
-
-                      {/* Title */}
-                      <motion.div variants={textItemVariants}>
-                        <Typography
-                          variant="h4"
-                          fontWeight="bold"
-                          sx={{
-                            mb: 2,
-                            letterSpacing: 1,
-                            textTransform: "uppercase",
-                            fontSize: { xs: 20, md: 24 },
-                            textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
-                          }}
-                        >
-                          {project.title}
-                        </Typography>
-                      </motion.div>
-
-                      {/* Description */}
-                      <motion.div variants={textItemVariants}>
-                        <Typography
-                          sx={{
-                            fontSize: 15,
-                            mb: 3,
-                            lineHeight: 1.6,
-                            opacity: 0.9,
-                          }}
-                        >
-                          {project.description}
-                        </Typography>
-                      </motion.div>
-
-                      {/* Category */}
-                      <motion.div variants={textItemVariants}>
-                        <Typography
-                          sx={{
-                            fontSize: 12,
-                            color: "#e0e0e0",
-                            letterSpacing: 1,
-                            mb: 3,
-                          }}
-                        >
-                          {project.category}
-                        </Typography>
-                      </motion.div>
-
-                      {/* Button */}
-                      <motion.div variants={textItemVariants}>
-                        <motion.div
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Button
-                            variant="outlined"
-                            sx={{
-                              color: "#fff",
-                              borderColor: "#fff",
-                              borderRadius: "50px",
-                              px: 4,
-                              py: 1.5,
-                              fontWeight: "bold",
-                              letterSpacing: 1.5,
-                              fontSize: "0.8rem",
-                              backdropFilter: "blur(10px)",
-                              backgroundColor: "rgba(255,255,255,0.1)",
-                              borderWidth: "2px",
-                              transition: "all 0.3s ease",
-                              "&:hover": {
-                                backgroundColor: "#fff",
-                                color: "#000",
-                                boxShadow: "0 0 25px rgba(255, 255, 255, 0.8)",
-                                borderColor: "#fff",
-                              },
-                            }}
-                          >
-                            {project.btn}
-                          </Button>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Static Bottom Info (visible without hover) */}
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      width: "100%",
-                      padding: 3,
+                      p: 3,
                       textAlign: "left",
                       opacity: activeIndex === index ? 0 : 1,
                       transition: "opacity 0.3s ease",
+                      zIndex: 1,
+                      pointerEvents: "none",
+                      background:
+                        "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)",
                     }}
                   >
                     <Typography
@@ -429,6 +237,76 @@ export default function LatestWorkSection() {
         </Grid>
       </motion.div>
 
+      {/* === MODAL (Fixed for Mobile) === */}
+      <Modal
+        open={Boolean(selectedProject)}
+        onClose={handleCloseModal}
+        sx={{
+          "& .MuiBackdrop-root": {
+            backgroundColor: "rgba(0,0,0,0.95) !important",
+          },
+        }}
+      >
+        <motion.div
+          variants={modalVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          style={{
+            position: "fixed",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            outline: "none",
+            padding: "16px", // mobile safe padding
+          }}
+        >
+          {/* Close Button */}
+          <IconButton
+            onClick={handleCloseModal}
+            sx={{
+              position: "fixed",
+              top: 12,
+              right: 12,
+              backgroundColor: "rgba(255,255,255,0.15)",
+              color: "#fff",
+              zIndex: 10,
+              "&:hover": { backgroundColor: "rgba(255,255,255,0.3)" },
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+
+          {/* Full Image */}
+          {selectedProject && (
+            <Box
+              sx={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "900px",
+                height: { xs: "70vh", sm: "85vh" },
+                borderRadius: 2,
+                overflow: "hidden",
+                boxShadow: "0 25px 50px rgba(0,0,0,0.6)",
+                zIndex: 5,
+              }}
+            >
+              <Image
+                src={selectedProject.img}
+                alt={selectedProject.title}
+                fill
+                style={{
+                  objectFit: "contain",
+                  backgroundColor: "black",
+                }}
+                priority
+              />
+            </Box>
+          )}
+        </motion.div>
+      </Modal>
+
       {/* View All Projects Button */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -438,27 +316,30 @@ export default function LatestWorkSection() {
         style={{ marginTop: "4rem" }}
       >
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Button
-            variant="contained"
-            size="medium"
-            sx={{
-              backgroundColor: "black",
-              color: "white",
-              borderRadius: "50px",
-              px: 4,
-              py: 1.5,
-              fontWeight: "regular",
-              letterSpacing: 1.5,
-              fontSize: "1rem",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
-              "&:hover": {
-                backgroundColor: "#333",
-                boxShadow: "0 15px 40px rgba(0,0,0,0.3)",
-              },
-            }}
-          >
-            View All Projects
-          </Button>
+          <Link href="/portfolio/all" passHref>
+            <Button
+              component="a"
+              variant="contained"
+              size="medium"
+              sx={{
+                backgroundColor: "black",
+                color: "white",
+                borderRadius: "50px",
+                px: 4,
+                py: 1.5,
+                fontWeight: "regular",
+                letterSpacing: 1.5,
+                fontSize: "1rem",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+                "&:hover": {
+                  backgroundColor: "#333",
+                  boxShadow: "0 15px 40px rgba(0,0,0,0.3)",
+                },
+              }}
+            >
+              View All Projects
+            </Button>
+          </Link>
         </motion.div>
       </motion.div>
     </Box>

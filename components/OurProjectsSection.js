@@ -1,6 +1,7 @@
 "use client";
 import { Box, Typography, Button, Grid, Stack } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function OurProjectsSection() {
   const projects = [
@@ -8,11 +9,13 @@ export default function OurProjectsSection() {
       title: "Commercial Projects",
       img: "/assets/home/commercial.jpeg",
       btn: "Explore Commercial",
+      link: "/portfolio/commercial",
     },
     {
       title: "Residential Projects",
       img: "/assets/home/residential.jpeg",
       btn: "Explore Residential",
+      link: "/portfolio/residential",
     },
   ];
 
@@ -22,7 +25,6 @@ export default function OurProjectsSection() {
         width: "90%",
         maxWidth: "1720px",
         mx: "auto",
-
         textAlign: "center",
       }}
     >
@@ -115,25 +117,29 @@ export default function OurProjectsSection() {
                 >
                   {project.title}
                 </Typography>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  sx={{
-                    color: "#fff",
-                    borderColor: "#fff",
-                    borderRadius: "4px",
-                    px: 3,
-                    py: 1,
-                    mb: 5,
-                    fontSize: 13,
-                    "&:hover": {
-                      backgroundColor: "#fff",
-                      color: "#000",
-                    },
-                  }}
-                >
-                  {project.btn}
-                </Button>
+
+                <Link href={project.link} passHref>
+                  <Button
+                    component="a"
+                    variant="outlined"
+                    size="small"
+                    sx={{
+                      color: "#fff",
+                      borderColor: "#fff",
+                      borderRadius: "4px",
+                      px: 3,
+                      py: 1,
+                      mb: 5,
+                      fontSize: 13,
+                      "&:hover": {
+                        backgroundColor: "#fff",
+                        color: "#000",
+                      },
+                    }}
+                  >
+                    {project.btn}
+                  </Button>
+                </Link>
               </Box>
             </Box>
           </Grid>

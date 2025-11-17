@@ -9,6 +9,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos, TouchApp } from "@mui/icons-material";
+import Link from "next/link";
 
 export default function Hero() {
   const theme = useTheme();
@@ -333,34 +334,37 @@ export default function Hero() {
                         }}
                       >
                         {/* Button */}
-                        <Button
-                          variant="outlined"
-                          size={isMobile ? "small" : "medium"}
-                          sx={{
-                            borderColor: "#C89B3C",
-                            color: "#fff",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.1em",
-                            px: { xs: 3, md: 5 },
-                            py: { xs: 0.75, md: 1.2 },
-                            fontWeight: 600,
-                            borderRadius: "30px",
-                            fontSize: {
-                              xs: "0.8rem",
-                              md: "0.9rem",
-                            },
-                            minWidth: { xs: "140px", md: "auto" },
-                            transition: "all 0.4s ease",
-                            "&:hover": {
-                              bgcolor: "#C89B3C",
-                              color: "#000",
+                        <Link href="/about" passHref>
+                          <Button
+                            component="a"
+                            variant="outlined"
+                            size={isMobile ? "small" : "medium"}
+                            sx={{
                               borderColor: "#C89B3C",
-                              transform: "translateY(-3px)",
-                            },
-                          }}
-                        >
-                          Discover More
-                        </Button>
+                              color: "#fff",
+                              textTransform: "uppercase",
+                              letterSpacing: "0.1em",
+                              px: { xs: 3, md: 5 },
+                              py: { xs: 0.75, md: 1.2 },
+                              fontWeight: 600,
+                              borderRadius: "30px",
+                              fontSize: {
+                                xs: "0.8rem",
+                                md: "0.9rem",
+                              },
+                              minWidth: { xs: "140px", md: "auto" },
+                              transition: "all 0.4s ease",
+                              "&:hover": {
+                                bgcolor: "#C89B3C",
+                                color: "#000",
+                                borderColor: "#C89B3C",
+                                transform: "translateY(-3px)",
+                              },
+                            }}
+                          >
+                            Discover More
+                          </Button>
+                        </Link>
                       </Box>
                     </Box>
                   </Box>
