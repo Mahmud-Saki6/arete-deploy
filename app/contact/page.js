@@ -215,7 +215,7 @@ export default function ContactUs() {
           sx={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "url('/assets/contact/hero.jpeg')",
+            backgroundImage: "url('/assets/contact/hero2.jpg')",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
