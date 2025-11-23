@@ -833,8 +833,8 @@ export default function ContactUs() {
                 <Box
                   sx={{
                     backgroundColor: "#fff",
-                    borderRadius: 4,
-                    p: 5,
+                    borderRadius: { xs: 3, md: 4 },
+                    p: { xs: 3, md: 5 },
                     boxShadow: "0 8px 40px rgba(0,0,0,0.1)",
                     border: "1px solid",
                     borderColor: "divider",
@@ -846,8 +846,10 @@ export default function ContactUs() {
                     sx={{
                       fontWeight: 700,
                       color: "#1a1a1a",
-                      mb: 4,
+                      mb: { xs: 3, md: 4 },
                       textAlign: "center",
+                      fontSize: { xs: "1.25rem", md: "1.5rem" },
+                      lineHeight: 1.3,
                     }}
                   >
                     Frequently Asked Questions
@@ -857,10 +859,10 @@ export default function ContactUs() {
                     <motion.div key={index} variants={itemVariants}>
                       <Box
                         sx={{
-                          mb: 3,
+                          mb: { xs: 2, md: 3 },
                           border: "1px solid",
                           borderColor: "divider",
-                          borderRadius: 2,
+                          borderRadius: { xs: 1.5, md: 2 },
                           overflow: "hidden",
                           transition: "all 0.3s ease-in-out",
                           "&:hover": {
@@ -871,12 +873,12 @@ export default function ContactUs() {
                       >
                         <Box
                           sx={{
-                            p: 3,
+                            p: { xs: 2.5, md: 3 },
                             backgroundColor: alpha("#C89B3C", 0.05),
                             cursor: "pointer",
                             display: "flex",
                             justifyContent: "space-between",
-                            alignItems: "center",
+                            alignItems: "flex-start",
                             transition: "all 0.3s ease-in-out",
                             "&:hover": {
                               backgroundColor: alpha("#C89B3C", 0.1),
@@ -889,7 +891,10 @@ export default function ContactUs() {
                             sx={{
                               fontWeight: 600,
                               color: "#1a1a1a",
-                              pr: 2,
+                              pr: { xs: 1.5, md: 2 },
+                              fontSize: { xs: "0.9rem", md: "1rem" },
+                              lineHeight: 1.4,
+                              flex: 1,
                             }}
                           >
                             {item.question}
@@ -901,19 +906,22 @@ export default function ContactUs() {
                                 : "rotate(0deg)",
                               transition: "transform 0.3s ease-in-out",
                               color: "#C89B3C",
+                              flexShrink: 0,
+                              mt: { xs: 0.25, md: 0 },
                             }}
                           >
-                            <FaChevronDown size={16} />
+                            <FaChevronDown size={14} />
                           </Box>
                         </Box>
 
                         <Collapse in={expanded[index]}>
-                          <Box sx={{ p: 3 }}>
+                          <Box sx={{ p: { xs: 2.5, md: 3 } }}>
                             <Typography
                               variant="body2"
                               sx={{
                                 color: "text.secondary",
                                 lineHeight: 1.6,
+                                fontSize: { xs: "0.85rem", md: "0.875rem" },
                               }}
                             >
                               {item.answer}

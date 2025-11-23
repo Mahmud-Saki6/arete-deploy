@@ -394,14 +394,18 @@ export default function BlogPage() {
     if (!content) return null;
 
     return (
-      <Box sx={{ lineHeight: 1.8 }}>
+      <Box sx={{ lineHeight: 1.6 }}>
         {/* Introduction */}
         {content.introduction &&
           content.introduction.map((paragraph, index) => (
             <Typography
               key={index}
               variant="body1"
-              sx={{ mb: 4, fontSize: "1.1rem" }}
+              sx={{
+                mb: 3,
+                fontSize: { xs: "0.9rem", md: "1.1rem" },
+                lineHeight: 1.7,
+              }}
             >
               {paragraph}
             </Typography>
@@ -410,10 +414,16 @@ export default function BlogPage() {
         {/* Sections */}
         {content.sections &&
           content.sections.map((section, sectionIndex) => (
-            <Box key={sectionIndex} sx={{ mb: 6 }}>
+            <Box key={sectionIndex} sx={{ mb: 5 }}>
               <Typography
                 variant="h4"
-                sx={{ fontWeight: 700, mb: 3, color: "#2c3e50" }}
+                sx={{
+                  fontWeight: 700,
+                  mb: 2,
+                  color: "#2c3e50",
+                  fontSize: { xs: "1.3rem", md: "1.75rem" },
+                  lineHeight: 1.3,
+                }}
               >
                 {section.title}
               </Typography>
@@ -425,7 +435,11 @@ export default function BlogPage() {
                       <Typography
                         key={itemIndex}
                         variant="body1"
-                        sx={{ mb: 3, fontSize: "1.1rem" }}
+                        sx={{
+                          mb: 2,
+                          fontSize: { xs: "0.9rem", md: "1.1rem" },
+                          lineHeight: 1.7,
+                        }}
                       >
                         {item}
                       </Typography>
@@ -434,14 +448,32 @@ export default function BlogPage() {
                     return (
                       <List
                         key={itemIndex}
-                        sx={{ listStyleType: "disc", pl: 2, mb: 3 }}
+                        sx={{
+                          listStyleType: "disc",
+                          pl: 2,
+                          mb: 2,
+                          fontSize: { xs: "0.9rem", md: "1rem" },
+                        }}
                       >
                         {item.list.map((listItem, listIndex) => (
                           <ListItem
                             key={listIndex}
-                            sx={{ display: "list-item", pl: 1, py: 0.5 }}
+                            sx={{
+                              display: "list-item",
+                              pl: 1,
+                              py: 0.5,
+                              fontSize: "inherit",
+                            }}
                           >
-                            {listItem}
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontSize: "inherit",
+                                lineHeight: 1.6,
+                              }}
+                            >
+                              {listItem}
+                            </Typography>
                           </ListItem>
                         ))}
                       </List>
@@ -450,7 +482,14 @@ export default function BlogPage() {
                   return null;
                 })
               ) : (
-                <Typography variant="body1" sx={{ mb: 3, fontSize: "1.1rem" }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mb: 2,
+                    fontSize: { xs: "0.9rem", md: "1.1rem" },
+                    lineHeight: 1.7,
+                  }}
+                >
                   {section.content}
                 </Typography>
               )}
@@ -458,27 +497,56 @@ export default function BlogPage() {
               {/* Subsections */}
               {section.subsections &&
                 section.subsections.map((subsection, subIndex) => (
-                  <Box key={subIndex} sx={{ mb: 4 }}>
+                  <Box key={subIndex} sx={{ mb: 3 }}>
                     <Typography
                       variant="h5"
-                      sx={{ fontWeight: 600, mb: 2, color: "#C89B3C" }}
+                      sx={{
+                        fontWeight: 600,
+                        mb: 1.5,
+                        color: "#C89B3C",
+                        fontSize: { xs: "1.1rem", md: "1.25rem" },
+                        lineHeight: 1.4,
+                      }}
                     >
                       {subsection.title}
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ mb: 2, fontSize: "1.1rem" }}
+                      sx={{
+                        mb: 1.5,
+                        fontSize: { xs: "0.9rem", md: "1.1rem" },
+                        lineHeight: 1.7,
+                      }}
                     >
                       {subsection.content}
                     </Typography>
                     {subsection.list && (
-                      <List sx={{ listStyleType: "disc", pl: 2 }}>
+                      <List
+                        sx={{
+                          listStyleType: "disc",
+                          pl: 2,
+                          fontSize: { xs: "0.9rem", md: "1rem" },
+                        }}
+                      >
                         {subsection.list.map((listItem, listIndex) => (
                           <ListItem
                             key={listIndex}
-                            sx={{ display: "list-item", pl: 1, py: 0.5 }}
+                            sx={{
+                              display: "list-item",
+                              pl: 1,
+                              py: 0.5,
+                              fontSize: "inherit",
+                            }}
                           >
-                            {listItem}
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontSize: "inherit",
+                                lineHeight: 1.6,
+                              }}
+                            >
+                              {listItem}
+                            </Typography>
                           </ListItem>
                         ))}
                       </List>
@@ -488,13 +556,33 @@ export default function BlogPage() {
 
               {/* Standalone lists */}
               {section.list && (
-                <List sx={{ listStyleType: "disc", pl: 2, mb: 3 }}>
+                <List
+                  sx={{
+                    listStyleType: "disc",
+                    pl: 2,
+                    mb: 2,
+                    fontSize: { xs: "0.9rem", md: "1rem" },
+                  }}
+                >
                   {section.list.map((listItem, listIndex) => (
                     <ListItem
                       key={listIndex}
-                      sx={{ display: "list-item", pl: 1, py: 0.5 }}
+                      sx={{
+                        display: "list-item",
+                        pl: 1,
+                        py: 0.5,
+                        fontSize: "inherit",
+                      }}
                     >
-                      {listItem}
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          fontSize: "inherit",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {listItem}
+                      </Typography>
                     </ListItem>
                   ))}
                 </List>
@@ -507,20 +595,30 @@ export default function BlogPage() {
           <Box
             sx={{
               bgcolor: "rgba(200, 155, 60, 0.1)",
-              p: 4,
+              p: { xs: 3, md: 4 },
               borderRadius: 2,
               mb: 4,
+              mt: 4,
             }}
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: 600, mb: 2, color: "#2c3e50" }}
+              sx={{
+                fontWeight: 600,
+                mb: 2,
+                color: "#2c3e50",
+                fontSize: { xs: "1rem", md: "1.25rem" },
+              }}
             >
               Conclusion
             </Typography>
             <Typography
               variant="body1"
-              sx={{ lineHeight: 1.7, fontStyle: "italic" }}
+              sx={{
+                lineHeight: 1.7,
+                fontStyle: "italic",
+                fontSize: { xs: "0.9rem", md: "1.1rem" },
+              }}
             >
               {content.conclusion}
             </Typography>
@@ -834,19 +932,28 @@ export default function BlogPage() {
       </Box>
 
       {/* ======================== FULLSCREEN MODAL ======================== */}
-      <Modal open={openModal} onClose={handleClose} sx={{ overflow: "auto" }}>
+      <Modal
+        open={openModal}
+        onClose={handleClose}
+        sx={{
+          overflow: "auto",
+          "& .MuiBackdrop-root": {
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+          },
+        }}
+      >
         <Box
           sx={{
             position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "90%",
+            width: { xs: "95%", sm: "90%" },
             maxWidth: "1200px",
-            maxHeight: "90vh",
+            maxHeight: { xs: "95vh", md: "90vh" },
             overflow: "auto",
             bgcolor: "background.paper",
-            borderRadius: 3,
+            borderRadius: { xs: 2, md: 3 },
             boxShadow: 24,
             p: 0,
           }}
@@ -858,27 +965,35 @@ export default function BlogPage() {
                 onClick={handleClose}
                 sx={{
                   position: "absolute",
-                  right: 16,
-                  top: 16,
+                  right: { xs: 8, md: 16 },
+                  top: { xs: 8, md: 16 },
                   zIndex: 10,
                   bgcolor: "rgba(255,255,255,0.9)",
                   "&:hover": { bgcolor: "rgba(255,255,255,1)" },
+                  width: { xs: 32, md: 48 },
+                  height: { xs: 32, md: 48 },
                 }}
               >
-                <Close />
+                <Close sx={{ fontSize: { xs: 18, md: 24 } }} />
               </IconButton>
 
               {/* Hero Image */}
               <CardMedia
                 component="img"
-                height="400"
+                height={isMobile ? "200" : "400"}
                 image={selectedBlog.image}
                 alt={selectedBlog.title}
                 sx={{ width: "100%" }}
               />
 
               {/* Content Container */}
-              <Container maxWidth="md" sx={{ py: 6 }}>
+              <Container
+                maxWidth="md"
+                sx={{
+                  py: { xs: 4, md: 6 },
+                  px: { xs: 3, md: 4 },
+                }}
+              >
                 {/* Article Header */}
                 <Box sx={{ mb: 4 }}>
                   <Chip
@@ -888,6 +1003,8 @@ export default function BlogPage() {
                       color: "#C89B3C",
                       fontWeight: 600,
                       mb: 3,
+                      fontSize: { xs: "0.7rem", md: "0.8rem" },
+                      height: { xs: 24, md: 32 },
                     }}
                   />
                   <Typography
@@ -896,7 +1013,7 @@ export default function BlogPage() {
                       fontWeight: 700,
                       mb: 3,
                       lineHeight: 1.3,
-                      fontSize: { xs: "2rem", md: "2.5rem" },
+                      fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
                       color: "#2c3e50",
                     }}
                   >
@@ -905,22 +1022,42 @@ export default function BlogPage() {
 
                   <Stack
                     direction={{ xs: "column", sm: "row" }}
-                    spacing={3}
+                    spacing={{ xs: 1, sm: 3 }}
                     sx={{ mb: 4 }}
                   >
                     <Stack direction="row" spacing={1} alignItems="center">
-                      <CalendarToday sx={{ fontSize: 18, color: "#C89B3C" }} />
-                      <Typography variant="body1">
+                      <CalendarToday
+                        sx={{
+                          fontSize: { xs: 16, md: 18 },
+                          color: "#C89B3C",
+                        }}
+                      />
+                      <Typography
+                        variant="body1"
+                        sx={{ fontSize: { xs: "0.8rem", md: "1rem" } }}
+                      >
                         {selectedBlog.date}
                       </Typography>
                     </Stack>
                     <Stack direction="row" spacing={1} alignItems="center">
-                      <Person sx={{ fontSize: 18, color: "#C89B3C" }} />
-                      <Typography variant="body1">
+                      <Person
+                        sx={{
+                          fontSize: { xs: 16, md: 18 },
+                          color: "#C89B3C",
+                        }}
+                      />
+                      <Typography
+                        variant="body1"
+                        sx={{ fontSize: { xs: "0.8rem", md: "1rem" } }}
+                      >
                         {selectedBlog.author}
                       </Typography>
                     </Stack>
-                    <Typography variant="body1" color="text.secondary">
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{ fontSize: { xs: "0.8rem", md: "1rem" } }}
+                    >
                       {selectedBlog.readTime}
                     </Typography>
                   </Stack>
